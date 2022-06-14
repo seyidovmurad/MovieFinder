@@ -1,0 +1,37 @@
+<%- include('partials/header'); -%>
+    <a href="/"><h1>Find Movie</h1></a>
+    <div class="movie">
+        <div class="movie-head">
+            <p><%= movie?.title %></p>
+            <img src="<%= movie?.image %>" alt="<%= movie?.title %>" />
+        </div>
+        <ul class="movie-body">
+            <li>Directors: <span><%= movie?.directors %></span></li>
+            <li>Country: <span><%= movie?.countries %></span></li>
+            <li>Genre: <span><%= movie?.genres %></span></li>
+            <li>Rating: <span><%= movie?.imDbRating %></span></li>
+            <li>Run time: <span><%= movie?.runtimeStr %></span></li>
+            <li>Released: <span><% movie?.releaseDate %></span></li>
+        </ul>
+    </div>
+    <div class="plot">
+        <h4>Plot</h4>
+        <p><%= movie?.plot %></p>
+    </div>
+    <div class="cast">
+        <h4>Top Cast</h4>
+        <div class="top-cast">
+            <%let count = 0%>
+            <%for(actor of movie?.actorList){ %>
+                <%if(count == 5) break %>
+                <% count++ %>
+                <div class="poster">
+                    <img src="<%= actor.image %>" alt="<%= actor.name %>" />
+                    <p><%= actor.name %></p>
+                    <h5>(<%= actor.asCharacter %>)</h5>
+                </div> 
+            <%}%>
+        </div>
+    </div>
+
+<%- include('partials/footer'); -%>
