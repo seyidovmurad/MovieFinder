@@ -42,6 +42,6 @@ app.get("/movie", function(req, res) {
     });
 })
 
-app.listen(5000, function() {
+app.listen(process.env.PORT || 3000, function() {
     console.log("Server running at port 3000");
 });
